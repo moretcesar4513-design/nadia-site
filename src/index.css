@@ -1,0 +1,34 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #08000a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root { width: 100%; min-height: 100vh; }
+
+h1, h2, h3, h4, p { margin: 0; }
+
+button, input { font-family: inherit; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #08000a; }
+::-webkit-scrollbar-thumb { background: rgba(192,0,10,0.45); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(224,0,10,0.7); }
+
+/* Selection */
+::selection { background: rgba(192,0,10,0.3); color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
