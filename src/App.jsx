@@ -522,7 +522,7 @@ const METRICS = [
   { val: '×3', label: 'productivité', side: 'left', pct: '2%', top: '60%', delay: 1.7, dy: -6, dur: 3.7 },
   { val: '-65%', label: 'temps admin', side: 'right', pct: '2%', top: '60%', delay: 1.9, dy: -9, dur: 3.0 },
   { val: '48h', label: 'installation', side: 'left', pct: '7%', top: '77%', delay: 2.1, dy: -7, dur: 2.6 },
-  { val: '90j', label: 'garantie', side: 'right', pct: '6%', top: '77%', delay: 2.3, dy: -10, dur: 3.5 },
+  { val: '7j', label: 'essai gratuit', side: 'right', pct: '6%', top: '77%', delay: 2.3, dy: -10, dur: 3.5 },
 ]
 
 function HeroMetrics() {
@@ -710,7 +710,7 @@ function Hero({ mobile }) {
 
       <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.85 }}
         style={{ fontSize: mobile ? '16px' : '19px', color: 'rgba(255,255,255,0.45)', maxWidth: '580px', marginBottom: '44px', lineHeight: 1.65, position: 'relative', zIndex: 1 }}>
-        NADIA automatise vos tâches chronophages grâce à des agents IA spécialisés dans l'immobilier. Opérationnel en 48h, sans effort de votre côté.
+        NADIA automatise vos tâches chronophages grâce à des agents IA spécialisés dans l'immobilier. Opérationnel en 48h — 7 jours d'essai gratuit, sans engagement.
       </motion.p>
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.0 }}
@@ -748,9 +748,9 @@ function Process({ mobile }) {
   const steps = [
     { n: '01', title: 'Appel découverte', desc: 'On comprend votre agence, vos outils et vos objectifs en 30 minutes chrono.', from: { x: -70, y: 0 } },
     { n: '02', title: 'On installe tout', desc: 'Notre équipe configure et connecte vos agents IA à vos outils existants.', from: { x: 0, y: 60 } },
-    { n: '03', title: 'Vos agents sont live', desc: 'Vos agents commencent à prospecter, qualifier et relancer automatiquement.', from: { x: 70, y: 0 } },
+    { n: '03', title: 'Vos agents sont live', desc: 'Vous testez pendant 7 jours, si ça vous convient on continue ensemble. Sans engagement.', from: { x: 70, y: 0 } },
   ]
-  const badges = ['Opérationnel sous 48h', 'Garantie 90 jours', 'Remboursement intégral', 'Zéro risque']
+  const badges = ['Vos agents opérationnels en 48h', '7 jours d\'essai gratuit', 'Sans engagement', 'Aucun risque']
 
   return (
     <section id="process" style={{ padding: mobile ? '80px 20px' : '120px 60px', position: 'relative', zIndex: 1 }}>
@@ -1132,7 +1132,7 @@ function FAQ({ mobile }) {
   const qs = [
     { q: "Comment fonctionne l'installation ?", a: "Notre équipe gère tout en 48h. Un appel de 30 minutes suffit pour configurer vos agents selon vos besoins. Aucune compétence technique requise." },
     { q: "Est-ce compatible avec mes outils actuels ?", a: "NADIA s'intègre avec SeLoger, Leboncoin, Gmail, WhatsApp, Notion, et bien d'autres. Si un outil manque, nous créons une intégration sur mesure." },
-    { q: "Que se passe-t-il si je ne suis pas satisfait ?", a: "Nous offrons une garantie de remboursement intégral pendant 90 jours. Si vous n'êtes pas satisfait, nous vous remboursons sans questions." },
+    { q: "Et si ça ne me convient pas ?", a: "Vous bénéficiez de 7 jours offerts pour tester. Sans engagement — vous testez, vous décidez. Aucun risque : si ça ne vous convient pas après l'essai, vous ne payez rien." },
     { q: "Mes données sont-elles en sécurité ?", a: "Absolument. Toutes vos données sont hébergées en France, chiffrées, et jamais partagées avec des tiers. Conformité RGPD garantie." },
     { q: "Combien de temps pour voir les premiers résultats ?", a: "La plupart de nos clients voient leurs premiers leads qualifiés dans les 7 premiers jours. Les résultats significatifs arrivent en 2-3 semaines." },
   ]
@@ -1199,7 +1199,7 @@ function FinalCTA({ mobile }) {
         </SI>
         <SI>
           <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: mobile ? '16px' : '19px', maxWidth: '480px', margin: '0 auto 44px', lineHeight: 1.65 }}>
-            Rejoignez les agences qui ont automatisé leur prospection avec NADIA. Installation en 48h, garantie 90 jours.
+            Rejoignez les agences qui ont automatisé leur prospection avec NADIA. Vos agents opérationnels en 48h — 7 jours d'essai gratuit, sans engagement.
           </p>
         </SI>
         <SI>
