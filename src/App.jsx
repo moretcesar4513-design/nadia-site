@@ -816,6 +816,12 @@ const AGENTS = [
     name: 'Clara', role: 'Mandats', photo: claraPhoto,
     skills: ['Suit vos mandats en temps réel', 'Relance avant expiration', 'Génère les rapports propriétaires'],
   },
+  {
+    name: 'Sur mesure', role: 'Projet / Agent IA', photo: null, color: '#ffd700',
+    price: 'Sur devis',
+    description: 'Agent IA ou automatisation 100% sur-mesure, adaptés à vos outils et vos process spécifiques.',
+    skills: ['Agent IA 100% personnalisé', 'Adapté à vos outils et process', 'On construit ensemble votre solution'],
+  },
 ]
 
 function AgentsCarousel({ mobile }) {
@@ -868,7 +874,7 @@ function AgentsCarousel({ mobile }) {
           style={{ ...glass, borderRadius: '50%', width: 42, height: 42, color: '#fff', fontSize: '18px', cursor: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.1)' }}>‹</motion.button>
 
         <div style={{ display: 'flex', gap: mobile ? '10px' : '14px', alignItems: 'center', perspective: '1200px' }}>
-          {visible.map(({ name, role, photo, skills, i, dist }) => {
+          {visible.map(({ name, role, photo, skills, color, price, i, dist }) => {
             const isActive = dist === 0
             return (
               <motion.div
@@ -899,22 +905,28 @@ function AgentsCarousel({ mobile }) {
                 }}
               >
                 <GlassReflex />
-                {/* Photo — grand format */}
-                <div style={{ width: '100%', height: isActive ? (mobile ? 220 : 280) : (mobile ? 180 : 230), overflow: 'hidden', flexShrink: 0 }}>
-                  <img src={photo} alt={name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
-                  />
+                {/* Photo — grand format ou placeholder sur-mesure */}
+                <div style={{ width: '100%', height: isActive ? (mobile ? 220 : 280) : (mobile ? 180 : 230), overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: photo ? 'transparent' : 'rgba(255,215,0,0.04)' }}>
+                  {photo
+                    ? <img src={photo} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
+                    : (
+                      <div style={{ textAlign: 'center', padding: '20px' }}>
+                        <div style={{ fontSize: isActive ? '52px' : '36px', marginBottom: '10px' }}>✦</div>
+                        <div style={{ color: color ?? '#ffd700', fontSize: isActive ? '13px' : '11px', fontWeight: 600, opacity: 0.7 }}>Projet sur mesure</div>
+                      </div>
+                    )
+                  }
                 </div>
                 {/* Info */}
                 <div style={{ padding: '16px 18px 20px', position: 'relative', zIndex: 3 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
-                    <span style={{ color: '#e0000a', fontSize: isActive ? '17px' : '14px', fontWeight: 800, letterSpacing: '-0.3px' }}>{name}</span>
+                    <span style={{ color: color ?? '#e0000a', fontSize: isActive ? '17px' : '14px', fontWeight: 800, letterSpacing: '-0.3px' }}>{name}</span>
                     <span style={{ color: 'rgba(255,255,255,0.36)', fontSize: '11px', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '1px' }}>{role}</span>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                     {skills.map(sk => (
                       <div key={sk} style={{ display: 'flex', alignItems: 'flex-start', gap: '7px' }}>
-                        <span style={{ color: '#e0000a', fontSize: '9px', marginTop: '4px', flexShrink: 0 }}>▸</span>
+                        <span style={{ color: color ?? '#e0000a', fontSize: '9px', marginTop: '4px', flexShrink: 0 }}>▸</span>
                         <span style={{
                           fontSize: isActive ? '12px' : '10px',
                           color: isActive ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.25)',
@@ -923,6 +935,11 @@ function AgentsCarousel({ mobile }) {
                       </div>
                     ))}
                   </div>
+                  {price && isActive && (
+                    <div style={{ marginTop: '14px', display: 'inline-block', background: 'rgba(255,215,0,0.1)', border: '1px solid rgba(255,215,0,0.3)', borderRadius: '50px', padding: '4px 14px', fontSize: '12px', color: '#ffd700', fontWeight: 600 }}>
+                      {price}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             )
