@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Legal from './pages/Legal.tsx'
 import {
   motion, AnimatePresence, useInView,
   useMotionValue, useSpring, useScroll, useTransform,
@@ -1232,7 +1234,7 @@ function Footer({ mobile }) {
         initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
         style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap', justifyContent: 'center' }}
       >
-        <motion.a href="#" whileHover={{ color: 'rgba(255,255,255,0.65)' }}
+        <motion.a href="/legal" whileHover={{ color: 'rgba(255,255,255,0.65)' }}
           style={{ color: 'rgba(255,255,255,0.28)', fontSize: '13px', textDecoration: 'none', cursor: 'none' }}>
           Mentions légales
         </motion.a>
@@ -1323,8 +1325,8 @@ function TrustMarquee({ mobile }) {
   )
 }
 
-// ── App ───────────────────────────────────────────────────────────────────────
-export default function App() {
+// ── Home ──────────────────────────────────────────────────────────────────────
+function HomePage() {
   const [mobile, setMobile] = useState(window.innerWidth < 768)
 
   useEffect(() => {
@@ -1333,7 +1335,6 @@ export default function App() {
     return () => ro.disconnect()
   }, [])
 
-  // Hide system cursor on desktop (unless prefers-reduced-motion)
   useEffect(() => {
     if (mobile || PRM) return
     const s = document.createElement('style')
@@ -1359,5 +1360,17 @@ export default function App() {
       <TrustMarquee mobile={mobile} />
       <Footer mobile={mobile} />
     </div>
+  )
+}
+
+// ── App ───────────────────────────────────────────────────────────────────────
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/legal" element={<Legal />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
