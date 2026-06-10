@@ -46,7 +46,7 @@ import canvaIcon from './assets/canva.svg'
 import trelloIcon from './assets/trello.svg'
 import calendlyIcon from './assets/calendly.svg'
 
-const CTA_URL = 'https://cal.com/cesar-moret-iebmmv/30min'
+const CTA_URL = 'https://cal.com/nadiaagents-iebmmv/30min'
 const PRM = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
 // ── Shared design tokens ───────────────────────────────────────────────────────
